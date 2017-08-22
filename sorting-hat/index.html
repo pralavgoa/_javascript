@@ -1,0 +1,65 @@
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body class="container-fluid">
+<div class="row">
+  <div class="wpb_column vc_column_container col-md-6">
+	  <div class="vc_column-inner ">
+		  <div class="wpb_wrapper">
+			<img src="files/sortinghat.jpg"></img>
+			<div>Haha, I am the sorting hat. Keep clicking "Click Me" without reloading, and i'll help you sort a group</div>
+			<div id="sorting-hat">
+			</div>
+			<div id="result">
+			</div>
+			<div id="result-image" style="max-width:622px">
+			</div>
+			<a class="btn btn-primary" href="#" onclick="clickButton()">Click Me, and I shall sort you!</a>
+		  </div>
+	  </div>
+  </div>
+</div>
+<script>
+var g=5;
+var n=5;
+function clickButton(){	
+	var dramaticAudio = new Audio('files/dramatic.mp3');
+	dramaticAudio.play();
+	document.getElementById("result").innerHTML = "Hmm... What seems to define you best.. lets see..";
+	document.getElementById("result-image").innerHTML = "<img src='files/spin.gif'>";
+	window.setTimeout(sortInTeam,9000);
+}
+
+function sortInTeam(){
+	var teamName="is not yet chosen"
+	var imageName="files/sortinghat.jpg"
+	var r=Math.random();
+	if(r<=n/(g+n)){
+		if(n!=0){
+			n--;
+			var audio = new Audio('files/team1.mp3');
+			audio.play();	
+			teamName="Puddlemere United";	
+			imageName="files/teamA.png"
+			window.setTimeout(playOvation,2000);
+		}		
+	}else{
+		if(g!=0){
+			g--;
+			var audio = new Audio('files/team2.mp3');
+			audio.play();
+			teamName="Chudley Cannons"	
+			imageName="files/teamB.png"
+			window.setTimeout(playOvation,2000);
+		}		
+	}
+	document.getElementById("sorting-hat").innerHTML = "Team Chudley Cannons has "+g+" remaining. Team Puddlemere United has "+n+" remaining";
+	document.getElementById("result").innerHTML = "<h1>Yay, team "+teamName+"</h1>";
+	document.getElementById("result-image").innerHTML = "<img style='width:622px' src='"+imageName+"'>";
+}
+function playOvation(){
+	var audio2 = new Audio('files/ovation.mp3');
+	audio2.play();
+}
+</script>
+</body>
